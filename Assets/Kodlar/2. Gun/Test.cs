@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Test : MonoBehaviour
 {
+    int maxForDegeri = 10;
     string isim = "Atakaan"; // global deðiþkenler 
 
     int yas = 15; // 2^32
@@ -92,10 +93,12 @@ public class Test : MonoBehaviour
             Debug.Log("Atakaan naber.");
         }
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < maxForDegeri; i = i +2)
         {
             Debug.Log("Arda naber.");
         }
+
+       
 
         //int a = 5 / 0;
     }
