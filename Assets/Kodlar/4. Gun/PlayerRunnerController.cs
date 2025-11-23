@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class PlayerRunnerController : MonoBehaviour
 {
     public float ileriHiz = 5;
-    public float kulvarMesafesi = 3;
+    public int kulvarMesafesi = 4;
 
     private int mevcutKulvar = 0;
     private int puan = 0;
@@ -53,6 +53,12 @@ public class PlayerRunnerController : MonoBehaviour
             //Time.timeScale = 0; // oyunu durdurma
             SceneManager.LoadScene("RunnerGame");
         }
+    }
+
+    public void PuanArtir(int artirilacakDeger)
+    {
+        puan += artirilacakDeger;
+        UpdatePuanText();
     }
 
     private void UpdatePuanText()

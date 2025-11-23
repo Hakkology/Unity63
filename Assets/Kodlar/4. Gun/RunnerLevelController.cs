@@ -16,6 +16,11 @@ public class RunnerLevelController : MonoBehaviour
 
     void Start()
     {
+        Invoke(nameof(SeviyeyiBaslat),5);
+    }
+
+    void SeviyeyiBaslat()
+    {
         float mevcutZ = oyuncu.position.z + 10;
 
         while (mevcutZ < maxZMesafesi)
@@ -38,7 +43,7 @@ public class RunnerLevelController : MonoBehaviour
             }
 
             // kübü oluþtur
-            Instantiate(spawnEdilecekObje, spawnNoktasi, Quaternion.identity);  
+            Instantiate(spawnEdilecekObje, spawnNoktasi, Quaternion.identity);
 
             // while ý kurtarmak için 
             mevcutZ += Random.Range(minAralik, maxAralik);

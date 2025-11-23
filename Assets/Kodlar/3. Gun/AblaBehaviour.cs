@@ -23,6 +23,8 @@ public class AblaBehaviour : MonoBehaviour
     public int maxAmmo = 7;
     public int remainingAmmo = 20;
     int currentAmmo = 0;
+    private float nextFireTime = 0f;
+    public float fireRate = 2f;
     public TextMeshProUGUI ammoText;
 
     void Start()
@@ -89,9 +91,10 @@ public class AblaBehaviour : MonoBehaviour
 
     void AtesEt()
     {
-        if (Input.GetMouseButtonDown(0) && currentAmmo > 0)
+        if (Input.GetMouseButtonDown(0) && currentAmmo > 0 && Time.time >= nextFireTime)
         {
             currentAmmo--;
+            nextFireTime = Time.time;
             UpdateAmmoText();
             Debug.Log("Ateþ açýldý, kalan mermi: " + currentAmmo);
         }
