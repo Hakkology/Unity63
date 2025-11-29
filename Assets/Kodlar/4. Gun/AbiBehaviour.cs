@@ -47,9 +47,6 @@ public class AbiBehaviour : MonoBehaviour
         Vector3 move = transform.right * xMovement + transform.forward * zMovement;
         //controller.Move(move * speed * Time.deltaTime);
 
-
-
-
         if (Input.GetButtonDown("Jump") && controller.isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
@@ -58,6 +55,7 @@ public class AbiBehaviour : MonoBehaviour
 
         Vector3 totalMove = (move * speed) + velocity;
         controller.Move(totalMove * Time.deltaTime);
+
     }
 
     private void OnTriggerEnter(Collider other)
