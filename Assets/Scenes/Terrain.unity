@@ -318,6 +318,7 @@ MonoBehaviour:
   gravity: -10
   jumpHeight: 2
   maxStamina: 100
+  stats: {fileID: 11400000, guid: 4c4356fd667fabb4fa0b30e7bdac6944, type: 2}
 --- !u!136 &679855215
 CapsuleCollider:
   m_ObjectHideFlags: 0

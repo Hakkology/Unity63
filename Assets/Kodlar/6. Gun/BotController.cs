@@ -1,5 +1,6 @@
 using System;
 using TMPro;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class BotController : MonoBehaviour
@@ -9,8 +10,8 @@ public class BotController : MonoBehaviour
     public TextMeshProUGUI staminaText;
 
     public float speed = 5.0f;
-    public int walkSpeed = 4;
-    public int runSpeed = 7;
+    public int walkSpeed => stats.agility;
+    public int runSpeed => stats.agility * 2;
 
     public float gravity = -10f;
     public float jumpHeight = 2.0f;
@@ -25,6 +26,8 @@ public class BotController : MonoBehaviour
 
     private CharacterController controller;
     private Animator animator;
+    [SerializeField]
+    private InsanStats stats;
 
     private void Awake()
     {
