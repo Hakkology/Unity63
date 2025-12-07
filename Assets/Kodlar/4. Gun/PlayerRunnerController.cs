@@ -1,24 +1,37 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PlayerRunnerController : MonoBehaviour
 {
+    private float hiz;
     public float ileriHiz = 5;
+    public float ileriKosmaHiz = 8;
     public int kulvarMesafesi = 4;
 
     private int mevcutKulvar = 0;
-    private int puan = 0;
+    
+    private PlayerScoreController scoreController;
+    private PlayerCanController canController;
+    private PlayerTimerController timerController;
+    private PlayerStaminaController staminaController;
 
-    public TextMeshProUGUI puanText;
+
+    private void Awake() 
+    {
+        scoreController = GetComponent<PlayerScoreController>();
+        canController = GetComponent<PlayerCanController>();
+        timerController = GetComponent<PlayerTimerController>();
+        staminaController =GetComponent<PlayerStaminaController>();
+        hiz = ileriHiz;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.forward * ileriHiz * Time.deltaTime);
+        
+        transform.Translate(Vector3.forward * hiz * Time.deltaTime);
 
         if (Input.GetKeyDown(KeyCode.LeftArrow) && mevcutKulvar > -2) 
         {
@@ -30,6 +43,17 @@ public class PlayerRunnerController : MonoBehaviour
         {
             mevcutKulvar++;
             KulvarDegistir();
+        }
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            hiz = ileriKosmaHiz;
+            staminaController.UpdateStamina(false);
+        }
+        else
+        {
+            hiz = ileriHiz;
+            staminaController.UpdateStamina(true);
         }
     }
 
@@ -43,26 +67,28 @@ public class PlayerRunnerController : MonoBehaviour
     {
         if (other.gameObject.tag == "Odul")
         {
-            puan += 5;
-            UpdatePuanText();
+            scoreController.PuanArtir(10);
             Destroy(other.gameObject);
         }
         else if (other.gameObject.tag == "Engel")
         {
-            Destroy(gameObject);
-            //Time.timeScale = 0; // oyunu durdurma
-            SceneManager.LoadScene("RunnerGame");
+            // Destroy(gameObject);
+            timerController.IncreaseTimer();
+            CheckGame();
+            Destroy(other.gameObject);
         }
     }
 
-    public void PuanArtir(int artirilacakDeger)
+    private void CheckGame()
     {
-        puan += artirilacakDeger;
-        UpdatePuanText();
-    }
-
-    private void UpdatePuanText()
-    {
-        puanText.text = "Puan: " + puan;
+        int currentCan = canController.GetCan();
+        if (currentCan > 1)
+        {
+            canController.UpdateCan(-1);
+        }
+        else
+        {
+            GUIController.Instance.OpenEndGamePanel();
+        }
     }
 }

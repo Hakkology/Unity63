@@ -35,8 +35,8 @@ public class TakipObjesi : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            var controller = other.gameObject.GetComponent<PlayerRunnerController>();
-            controller.PuanArtir(10);
+            // var controller = other.gameObject.GetComponent<PlayerScoreController>();
+            // controller.PuanArtir(10);
             //Destroy(gameObject);
 
             float xKoordinati = Random.Range(-1, 2);
