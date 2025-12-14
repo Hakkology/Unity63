@@ -35,9 +35,11 @@ class MovingState : IState
             _controller.ChangeState(AIState.Attack);
         }
 
-        Vector3.MoveTowards(
-            _controller.gameObject.transform.position,
-            _controller.player.position,
-            _controller.speed * Time.deltaTime);
+        // Vector3.MoveTowards(
+        //     _controller.gameObject.transform.position,
+        //     _controller.player.position,
+        //     _controller.speed * Time.deltaTime);
+
+        _controller.agent.SetDestination(_controller.player.position);
     }
 }

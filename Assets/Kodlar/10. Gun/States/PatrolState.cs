@@ -19,9 +19,10 @@ class PatrolState : IState
 
     public void Exit()
     {
-        currentPatrolIndex += 1;
-        currentPatrolIndex =
-        currentPatrolIndex % _controller.patrolPoints.Count;
+        // currentPatrolIndex += 1;
+        // currentPatrolIndex =
+        // currentPatrolIndex % _controller.patrolPoints.Count;
+        currentPatrolIndex = Random.Range(0, _controller.patrolPoints.Count);
     }
 
     public void Update()
@@ -33,14 +34,21 @@ class PatrolState : IState
             _controller.ChangeState(AIState.Chase);
         }
 
-        Vector3.MoveTowards(
-            _controller.gameObject.transform.position,
-            _controller.patrolPoints[currentPatrolIndex].position,
-            _controller.speed * Time.deltaTime);
+        // Vector3.MoveTowards(
+        //     _controller.gameObject.transform.position,
+        //     _controller.patrolPoints[currentPatrolIndex].position,
+        //     _controller.speed * Time.deltaTime);
+        _controller.agent.SetDestination
+        (_controller.patrolPoints[currentPatrolIndex].position);
 
-        if (Vector3.Distance(
-            _controller.gameObject.transform.position,
-            currentPatrolTarget.position) < .5f)
+        // if (Vector3.Distance(
+        //     _controller.gameObject.transform.position,
+        //     currentPatrolTarget.position) < .5f)
+        // {
+        //     _controller.ChangeState(AIState.Idle);
+        // }
+
+        if (_controller.agent.remainingDistance< .5f)
         {
             _controller.ChangeState(AIState.Idle);
         }

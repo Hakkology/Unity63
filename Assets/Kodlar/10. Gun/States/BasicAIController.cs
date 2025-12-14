@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public enum AIState
 {
@@ -13,6 +14,7 @@ public enum AIState
 public class BasicAIController : MonoBehaviour
 {
     public Transform player;
+    public NavMeshAgent agent;
     public List<Transform> patrolPoints;
     public float speed = 4;
 
@@ -24,9 +26,10 @@ public class BasicAIController : MonoBehaviour
 
     private void Start()
     {
+        agent = GetComponent<NavMeshAgent>();
         idleState = new IdleState(this);
         movingState = new MovingState(this);
-        idleState = new AttackState(this);
+        attackState = new AttackState(this);
         patrolState = new PatrolState(this);
 
         currentState = idleState;

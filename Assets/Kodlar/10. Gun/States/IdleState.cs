@@ -12,12 +12,12 @@ class IdleState : IState
     
     public void Enter()
     {
-        timer = 0;
+
     }
 
     public void Exit()
     {
-
+        // timer = 0;
     }
 
     public void Update()
@@ -29,9 +29,10 @@ class IdleState : IState
             _controller.ChangeState(AIState.Chase);
         }
 
-        while (timer < 4)
+        timer += Time.deltaTime;
+        if (timer > 4)
         {
-            timer += Time.deltaTime;
+            timer = 0;
             _controller.ChangeState(AIState.Patrol);
         }
     }
