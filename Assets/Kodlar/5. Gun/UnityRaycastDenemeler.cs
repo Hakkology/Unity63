@@ -1,27 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public class UnityRaycastDenemeler : MonoBehaviour
 {
-    public GameObject player;
-    Ray ray;
+    // public GameObject player;
+    // Ray ray;
 
-    void CheckGrounded()
-    {
-        Ray ray = new Ray(transform.position, Vector3.down);
-        RaycastHit hit;
+    // void CheckGrounded()
+    // {
+    //     Ray ray = new Ray(transform.position, Vector3.down);
+    //     RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, 1f))
-        {
-            Debug.Log("Karakter zemin üzerinde!");
-        }
-        else
-        {
-            Debug.Log("Karakter hava durumunda!");
-        }
-    }
+    //     if (Physics.Raycast(ray, out hit, 1f))
+    //     {
+    //         Debug.Log("Karakter zemin ï¿½zerinde!");
+    //     }
+    //     else
+    //     {
+    //         Debug.Log("Karakter hava durumunda!");
+    //     }
+    // }
 
     //void CheckPlayerVisibility()
     //{
@@ -33,7 +32,7 @@ public class UnityRaycastDenemeler : MonoBehaviour
     //    {
     //        if (hit.collider.gameObject == player)
     //        {
-    //            Debug.Log("Oyuncu görüldü!");
+    //            Debug.Log("Oyuncu gï¿½rï¿½ldï¿½!");
     //        }
     //    }
     //}
@@ -45,20 +44,20 @@ public class UnityRaycastDenemeler : MonoBehaviour
 
     //    if (Physics.Raycast(ray, out hit, 100f))
     //    {
-    //        Debug.Log("Ateþ edildi ve " + hit.collider.gameObject.name + " vuruldu!");
+    //        Debug.Log("Ateï¿½ edildi ve " + hit.collider.gameObject.name + " vuruldu!");
     //    }
     //}
 
     //void Update()
     //{
     //    if (Input.GetMouseButtonDown(0))
-    //    { // Fare týklamasý algýlandýðýnda
+    //    { // Fare tï¿½klamasï¿½ algï¿½landï¿½ï¿½ï¿½nda
     //        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
     //        RaycastHit hit;
 
     //        if (Physics.Raycast(ray, out hit, 100f))
     //        {
-    //            Debug.Log(hit.collider.gameObject.name + " seçildi!");
+    //            Debug.Log(hit.collider.gameObject.name + " seï¿½ildi!");
     //        }
     //    }
     //}
@@ -91,7 +90,7 @@ public class UnityRaycastDenemeler : MonoBehaviour
 
     //    if (Physics.Raycast(ray, out hit, 100f))
     //    {
-    //        Debug.Log(hit.collider.gameObject.name + " ile çarpýþtý!");
+    //        Debug.Log(hit.collider.gameObject.name + " ile ï¿½arpï¿½ï¿½tï¿½!");
     //    }
     //}
 
@@ -106,14 +105,14 @@ public class UnityRaycastDenemeler : MonoBehaviour
 
 //public class CollisionLayerCheck : MonoBehaviour
 //{
-//    // Karþýlaþtýrýlacak katman adý (örnek: "Enemy")
+//    // Karï¿½ï¿½laï¿½tï¿½rï¿½lacak katman adï¿½ (ï¿½rnek: "Enemy")
 //    public string targetLayerName = "Enemy";
 
 //    private void OnTriggerEnter(Collider other)
 //    {
 //        if (LayerMask.LayerToName(other.gameObject.layer) == "Player")
 //        {
-//            Debug.Log("Enemy çarpýþmasý: " + other.name);
+//            Debug.Log("Enemy ï¿½arpï¿½ï¿½masï¿½: " + other.name);
 //        }
 //    }
 //}
